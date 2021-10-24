@@ -21,11 +21,13 @@
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="36dp"
         android:layout_marginEnd="10dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/calendar">
+
         <ListView
             android:id="@+id/listView"
             android:layout_width="match_parent"
@@ -35,65 +37,69 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />-->
     </ScrollView>
-    <EditText
-        android:id="@+id/note_text"
-        android:layout_marginLeft="10dp"
-        android:layout_width="200dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="5dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/list_scroll"/>
+
     <Spinner
         android:id="@+id/note_spinner"
         android:layout_width="130dp"
         android:layout_height="45dp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
         app:layout_constraintStart_toEndOf="@+id/note_text"
-        app:layout_constraintTop_toTopOf="@+id/note_text"/>
+        app:layout_constraintTop_toBottomOf="@+id/list_scroll" />
+
+    <EditText
+        android:id="@+id/note_text"
+        android:layout_width="200dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/list_scroll" />
+
     <Button
         android:id="@+id/add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="5dp"
-        android:text="Добавить"
+        android:layout_marginTop="7dp"
+        android:onClick="addButton"
+        android:text="Add"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/note_text"
-        android:onClick="addButton"/>
-    <Button
-        android:id="@+id/change"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:text="Изм."
-        app:layout_constraintStart_toEndOf="@+id/add"
-        app:layout_constraintTop_toTopOf="@+id/add"
-        android:onClick="changeButton"/>
+        app:layout_constraintTop_toBottomOf="@+id/note_text" />
+
     <Button
         android:id="@+id/delete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:text="Удал."
+        android:layout_marginTop="7dp"
+        android:onClick="deleteButton"
+        android:text="delete"
         app:layout_constraintStart_toEndOf="@+id/change"
-        app:layout_constraintTop_toTopOf="@+id/change"
-        android:onClick="deleteButton"/>
+        app:layout_constraintTop_toBottomOf="@+id/note_spinner" />
+
+    <Button
+        android:id="@+id/change"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="7dp"
+        android:onClick="changeButton"
+        android:text="change"
+        app:layout_constraintStart_toEndOf="@+id/add"
+        app:layout_constraintTop_toBottomOf="@+id/note_text" />
 
     <ScrollView
         android:id="@+id/list_scroll_category"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add">
+        tools:layout_editor_absoluteX="-11dp"
+        tools:layout_editor_absoluteY="721dp">
+
         <ListView
             android:id="@+id/listViewCategory"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
-        </ListView>
+            android:layout_height="wrap_content"></ListView>
         <!-- <androidx.recyclerview.widget.RecyclerView
              android:id="@+id/list_category"
              android:layout_width="match_parent"
@@ -104,18 +110,43 @@
         android:id="@+id/add_cat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="5dp"
-        android:text="Добавить категорию"
+        android:onClick="addCatButton"
+        android:text="Add category"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/list_scroll_category"
-        android:onClick="addCatButton"/>
+        app:layout_constraintTop_toBottomOf="@+id/cat_text" />
+
     <EditText
         android:id="@+id/cat_text"
-        android:layout_marginLeft="10dp"
-        android:layout_width="150dp"
+        android:layout_width="200dp"
         android:layout_height="45dp"
-        app:layout_constraintStart_toEndOf="@+id/add_cat"
-        app:layout_constraintTop_toTopOf="@+id/add_cat"/>
+        android:layout_marginStart="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="593dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Категории"
+        android:textColor="@color/black"
+        android:textSize="17dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_cat" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Заметки"
+        android:textColor="@color/black"
+        android:textSize="17dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/calendar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
