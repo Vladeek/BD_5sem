@@ -1,7 +1,8 @@
 package com.example.lab8;
+
 import java.io.Serializable;
 
-public class Note implements Serializable{
+public class Note implements Serializable {
 
     private String value;
     private String category;

@@ -1,7 +1,6 @@
 package com.example.lab8;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.View;
@@ -47,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         noteSpinner = findViewById(R.id.note_spinner);
 
         listViewNotes = findViewById(R.id.listView);
-        listViewCategories= findViewById(R.id.listViewCategory);
+        listViewCategories = findViewById(R.id.listViewCategory);
 
         addButton = findViewById(R.id.add);
         changeButton = findViewById(R.id.change);
@@ -57,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         deleteButton.setVisibility(View.INVISIBLE);
 
         CalendarView cal = findViewById(R.id.calendar);
-        cal.setOnDateChangeListener(new CalendarView.OnDateChangeListener(){
+        cal.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
                 int mYear = year;
@@ -81,75 +80,64 @@ public class MainActivity extends AppCompatActivity {
 
     private boolean existBase(String fname) {
         boolean rc = false;
-        File f = new File(super.getFilesDir(),fname);
-        File f2 = new File(super.getFilesDir(),fnamecat);
+        File f = new File(super.getFilesDir(), fname);
+        File f2 = new File(super.getFilesDir(), fnamecat);
 
-        Toast ex = Toast.makeText(getApplicationContext(),"Такой файл уже существует!", Toast.LENGTH_SHORT);
-        Toast cr = Toast.makeText(getApplicationContext(),"Файл создан!", Toast.LENGTH_SHORT);
-        Toast dcr = Toast.makeText(getApplicationContext(),"Файл не был создан!", Toast.LENGTH_SHORT);
+        Toast cr = Toast.makeText(getApplicationContext(), "Файл создан!", Toast.LENGTH_SHORT);
+        Toast dcr = Toast.makeText(getApplicationContext(), "Файл не был создан!", Toast.LENGTH_SHORT);
 
-        if (rc = f.exists())
-        {
-            ex.show();
-        }
-        else
-        {
+        if (rc = f.exists()) {
+
+        } else {
             File f1 = new File(super.getFilesDir(), fname);
-            try
-            {
+            try {
                 f1.createNewFile();
                 cr.show();
-            }
-            catch (IOException e)
-            {
+            } catch (IOException e) {
                 dcr.show();
             }
         }
-        if (rc = f2.exists())
-        {
-            ex.show();
-        }
-        else
-        {
+        if (rc = f2.exists()) {
+
+        } else {
             File f1 = new File(super.getFilesDir(), fnamecat);
-            try
-            {
+            try {
                 f1.createNewFile();
                 cr.show();
-            }
-            catch (IOException e)
-            {
+            } catch (IOException e) {
                 dcr.show();
             }
         }
         return rc;
     }
 
-    public void saveNotes(List<Note> list){
+    public void saveNotes(List<Note> list) {
         XMLHelper xml = new XMLHelper(fname);
         xml.writeNoteToInternal(this, list);
     }
-    public void saveCategories(List<String> list){
+
+    public void saveCategories(List<String> list) {
         XMLHelper xml = new XMLHelper(fnamecat);
         xml.writeCategoryToInternal(this, list);
     }
 
-    public List<Note> openNotes(){
+    public List<Note> openNotes() {
         List<Note> NoteList = new ArrayList<Note>();
         XMLHelper xml = new XMLHelper(fname);
-        try{
+        try {
             NoteList = xml.readNoteFromInternal(this);
-        }catch(Exception e){
+        } catch (Exception e) {
             Toast.makeText(this, "Файл отсутствует", Toast.LENGTH_LONG).show();
         }
         return NoteList != null ? NoteList : new ArrayList<Note>();
     }
-    public List<String> openCategories(){
+
+    public List<String> openCategories() {
         List<String> list = new ArrayList<String>();
         XMLHelper xml = new XMLHelper(fnamecat);
-        try{
+        try {
             list = xml.readCategoryFromInternal(this);
-        }catch(Exception e){
+        } catch (Exception e) {
             Toast.makeText(this, "Файл отсутствует", Toast.LENGTH_LONG).show();
         }
         return list != null ? list : new ArrayList<String>();
@@ -158,14 +146,14 @@ public class MainActivity extends AppCompatActivity {
     public void addButton(View view) {
         try {
             List<Note> notes = openNotes();
-            if(notes.size()>19)
+            if (notes.size() > 19)
                 return;
             int count = 0;
             for (Note var : notes) {
-                if(var.getDate().equals(selectedDate))
+                if (var.getDate().equals(selectedDate))
                     count++;
             }
-            if(count > 4)
+            if (count > 4)
                 return;
             String outstr = noteText.getText().toString();
             String outcat = noteSpinner.getSelectedItem().toString();
@@ -175,21 +163,20 @@ public class MainActivity extends AppCompatActivity {
             Collections.sort(notes, ds);
             saveNotes(notes);
             check();
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
         }
     }
 
-    private void check(){
+    private void check() {
         changeButton.setVisibility(View.INVISIBLE);
         deleteButton.setVisibility(View.INVISIBLE);
         addButton.setVisibility(View.VISIBLE);
         List<Note> notes = openNotes();
         List<String> noteForView = new ArrayList<>();
         List<String> categories = openCategories();
-        for (Note itVar : notes){
-            if(selectedDate.equals(itVar.getDate())){
+        for (Note itVar : notes) {
+            if (selectedDate.equals(itVar.getDate())) {
                 noteForView.add(itVar.getValue() + " - " + itVar.getCategory());
             }
         }
@@ -220,15 +207,14 @@ public class MainActivity extends AppCompatActivity {
             notes.remove(tmp);
             saveNotes(notes);
             check();
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
         }
     }
 
     public void addCatButton(View view) {
         List<String> categories = openCategories();
-        if(categories.size()>4)
+        if (categories.size() > 4)
             return;
         String newCat = catText.getText().toString();
         categories.add(newCat);
@@ -239,14 +225,14 @@ public class MainActivity extends AppCompatActivity {
     public void changeButton(View view) {
         try {
             List<Note> notes = openNotes();
-            if(notes.size()>19)
+            if (notes.size() > 19)
                 return;
             int count = 0;
             for (Note var : notes) {
-                if(var.getDate().equals(selectedDate))
+                if (var.getDate().equals(selectedDate))
                     count++;
             }
-            if(count > 4)
+            if (count > 4)
                 return;
 
             String outstr = noteText.getText().toString();
@@ -260,8 +246,7 @@ public class MainActivity extends AppCompatActivity {
             Collections.sort(notes, ds);
             saveNotes(notes);
             check();
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
         }
     }

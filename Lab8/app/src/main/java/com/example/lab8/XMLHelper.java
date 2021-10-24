@@ -21,11 +21,12 @@ import javax.xml.parsers.DocumentBuilderFactory;
 
 public class XMLHelper {
     String filename;
-    public XMLHelper(String filename){
+
+    public XMLHelper(String filename) {
         this.filename = filename;
     }
 
-    public void writeNoteToInternal(Context context, List<Note> dataList){
+    public void writeNoteToInternal(Context context, List<Note> dataList) {
 
         FileOutputStream fos;
         try {
@@ -64,7 +65,8 @@ public class XMLHelper {
             e.printStackTrace();
         }
     }
-    public List<Note> readNoteFromInternal(Context context){
+
+    public List<Note> readNoteFromInternal(Context context) {
         List<Note> arrayResult = new ArrayList<>();
         FileInputStream fis = null;
         InputStreamReader isr = null;
@@ -102,19 +104,17 @@ public class XMLHelper {
 
             items = dom.getElementsByTagName("note");
 
-            for (int i = 0; i < items.getLength(); i++)
-            {
+            for (int i = 0; i < items.getLength(); i++) {
                 Note note = new Note();
                 Node item = items.item(i);
                 NodeList parametres = item.getChildNodes();
-                for (int j = 0; j < parametres.getLength(); j++)
-                {
+                for (int j = 0; j < parametres.getLength(); j++) {
                     Node parametr = parametres.item(j);
-                    if(parametr.getNodeName().equals("value"))
+                    if (parametr.getNodeName().equals("value"))
                         note.setValue(parametr.getFirstChild().getNodeValue());
-                    if(parametr.getNodeName().equals("category"))
+                    if (parametr.getNodeName().equals("category"))
                         note.setCategory(parametr.getFirstChild().getNodeValue());
-                    if(parametr.getNodeName().equals("date"))
+                    if (parametr.getNodeName().equals("date"))
                         note.setDate(parametr.getFirstChild().getNodeValue());
 
                 }
@@ -126,7 +126,7 @@ public class XMLHelper {
         return arrayResult != null ? arrayResult : new ArrayList<>();
     }
 
-    public void writeCategoryToInternal(Context context, List<String> dataList){
+    public void writeCategoryToInternal(Context context, List<String> dataList) {
 
         FileOutputStream fos;
         try {
@@ -153,7 +153,8 @@ public class XMLHelper {
             e.printStackTrace();
         }
     }
-    public List<String> readCategoryFromInternal(Context context){
+
+    public List<String> readCategoryFromInternal(Context context) {
         List<String> arrayResult = new ArrayList<>();
         FileInputStream fis = null;
         InputStreamReader isr = null;
@@ -191,8 +192,7 @@ public class XMLHelper {
 
             items = dom.getElementsByTagName("category");
 
-            for (int i = 0; i < items.getLength(); i++)
-            {
+            for (int i = 0; i < items.getLength(); i++) {
                 Node item = items.item(i);
                 arrayResult.add(item.getFirstChild().getNodeValue());
             }
