@@ -7,7 +7,7 @@ import android.content.Context;
 public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "SimpleTable.db"; // название бд
     private static final int SCHEMA = 1; // версия базы данных
-    static final String TABLE = "users"; // название таблицы в бд
+    static final String TABLE = "SimpleTable"; // название таблицы в бд
     // названия столбцов
     public static final String COLUMN_ID = "ID";
     public static final String COLUMN_F = "F";
@@ -21,8 +21,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
 
         db.execSQL("CREATE TABLE SimpleTable (" + COLUMN_ID
-                + " INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_F
-                + " FLOAT, " + COLUMN_T + " TEXT);");
+                + " INTEGER PRIMARY KEY," + COLUMN_F
+                + " REAL, " + COLUMN_T + " TEXT);");
         // добавление начальных данных
         db.execSQL("INSERT INTO " + TABLE + " (" + COLUMN_F
                 + ", " + COLUMN_T + ") VALUES (1.235, 'text');");
