@@ -14,7 +14,8 @@
         android:layout_marginTop="10dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="F"
+        android:hint="Float"
+        android:textColorHint="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/id_field" />
 
@@ -26,7 +27,8 @@
         android:layout_marginTop="10dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="T"
+        android:hint="Text"
+        android:textColorHint="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/f_field" />
 
@@ -38,7 +40,8 @@
         android:layout_marginTop="16dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="ID"
+        android:hint="ID"
+        android:textColorHint="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -55,30 +58,35 @@
             android:id="@+id/insert"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="insert" />
+            android:text="insert"
+            android:onClick="insert"/>
 
         <Button
             android:id="@+id/select"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="select" />
+            android:text="select"
+            android:onClick="select"/>
 
         <Button
             android:id="@+id/selectraw"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="selectraw" />
+            android:text="selectraw"
+            android:onClick="selectRaw"/>
 
         <Button
             android:id="@+id/update"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="update" />
+            android:text="update"
+            android:onClick="update"/>
 
         <Button
             android:id="@+id/delete"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="delete" />
+            android:text="delete"
+            android:onClick="delete"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
