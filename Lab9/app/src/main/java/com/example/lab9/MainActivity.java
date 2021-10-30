@@ -3,12 +3,17 @@ package com.example.lab9;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentValues;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -45,10 +50,47 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void select(View view) {
+        String[] projection = {DatabaseHelper.COLUMN_ID, DatabaseHelper.COLUMN_F, DatabaseHelper.COLUMN_T};
+        String selection = DatabaseHelper.COLUMN_ID + " = ?";
+        String[] selectionArgs = {ID.getText().toString()};
+
+        Cursor cursor = db.query(
+                DatabaseHelper.TABLE, // имя таблицы
+                projection, // столбцы
+                selection, // столбцы для WHERE
+                selectionArgs, // значения для WHERE
+                null, // не группировать строки
+                null, // не фильтровать
+                null // порядок сортировки
+        );
+
+        int count = cursor.getCount();
+
+        cursor.moveToFirst();
+        String idValue = cursor.getString(0);
+        float fValue = cursor.getFloat(1);
+        String tValue = cursor.getString(2);
+        ID.setText(idValue);
+        F.setText(String.valueOf(fValue));
+        T.setText(tValue);
+
+        cursor.close();
+
 
     }
 
     public void selectRaw(View view) {
+        String[] selectionArgs = {ID.getText().toString()};
+        Cursor cursor = db.rawQuery("select ID, F, T from SimpleTable where ID = ?", selectionArgs);
+        cursor.moveToFirst();
+        String idValue = cursor.getString(0);
+        float fValue = cursor.getFloat(1);
+        String tValue = cursor.getString(2);
+        ID.setText(idValue);
+        F.setText(String.valueOf(fValue));
+        T.setText(tValue);
+
+        cursor.close();
     }
 
     public void update(View view) {
