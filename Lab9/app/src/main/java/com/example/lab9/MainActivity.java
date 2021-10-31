@@ -94,8 +94,27 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void update(View view) {
+        String[] selectionArgs = {ID.getText().toString()};
+        String selection = DatabaseHelper.COLUMN_ID + " LIKE ?";
+        int idStr = Integer.parseInt(ID.getText().toString());
+        float fStr = Float.parseFloat(F.getText().toString());
+        String tStr = T.getText().toString();
+        ContentValues values = new ContentValues();
+        values.put("F", fStr);
+        values.put("T", tStr);
+        // вставляем, возвращает primary key
+        long newRowId;
+        newRowId = db.update(
+                DatabaseHelper.TABLE,
+                values,
+                selection,
+                selectionArgs);
     }
 
     public void delete(View view) {
+        String selection = DatabaseHelper.COLUMN_ID + " LIKE ?";
+        String[] selectionArgs = {ID.getText().toString()};
+        int deletedRows = db.delete(DatabaseHelper.TABLE, selection,
+                selectionArgs);
     }
 }
