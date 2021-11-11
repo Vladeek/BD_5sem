@@ -32,9 +32,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 + " TEXT UNIQUE NOT NULL);");
 
         db.execSQL("CREATE TABLE Students (" + COLUMN_ID_GROUP
-                + " INTEGER PRIMARY KEY NOT NULL," + COLUMN_ID_STUDENT
-                + " INTEGER PRIMARY KEY NOT NULL UNIQUE, " + COLUMN_NAME
-                + " TEXT UNIQUE NOT NULL," + "FOREIGN KEY(IDGROUP) REFERENCES Groups(IDGROUP));");
+                + " INTEGER NOT NULL," + COLUMN_ID_STUDENT
+                + " INTEGER NOT NULL UNIQUE, " + COLUMN_NAME
+                + " TEXT UNIQUE NOT NULL," + "FOREIGN KEY(IDGROUP) REFERENCES Groups(IDGROUP) ON UPDATE CASCADE ON DELETE CASCADE);");
     }
 
     @Override

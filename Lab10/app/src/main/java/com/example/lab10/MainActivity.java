@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         sqlHelper = new DatabaseHelper(this);
+        db = sqlHelper.getWritableDatabase();
     }
 
     /*public void insert(View view) {
