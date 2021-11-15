@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Lab10">
         <activity
+            android:name=".AddToGroupActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddToStudActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
