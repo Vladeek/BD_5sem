@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:ems="10"
-            android:hint="ID GROUP"
+            android:hint="ID группы"
             android:inputType="textPersonName"
             android:textSize="20sp"
             tools:ignore="TouchTargetSizeCheck" />
@@ -28,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:ems="10"
-            android:hint="FACULTY"
+            android:hint="Факультет"
             android:inputType="textPersonName"
             android:textSize="20sp"
             tools:ignore="TouchTargetSizeCheck" />
@@ -38,7 +38,7 @@
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:ems="10"
-            android:hint="COURSE"
+            android:hint="Курс"
             android:inputType="textPersonName"
             android:textSize="20sp"
             tools:ignore="TouchTargetSizeCheck" />
@@ -48,7 +48,7 @@
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:ems="10"
-            android:hint="NAME"
+            android:hint="Название группы"
             android:inputType="textPersonName"
             android:textSize="20sp"
             tools:ignore="TouchTargetSizeCheck" />
@@ -58,7 +58,7 @@
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:ems="10"
-            android:hint="HEAD"
+            android:hint="Староста"
             android:inputType="textPersonName"
             android:textSize="20sp"
             tools:ignore="TouchTargetSizeCheck" />
@@ -69,7 +69,7 @@
             android:layout_height="60dp"
             android:layout_gravity="center"
             android:onClick="insert"
-            android:text="insert"
+            android:text="Добавить"
             android:textSize="20sp" />
     </LinearLayout>
 
