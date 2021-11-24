@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        File file = getDatabasePath("DB_11");
+        File file = getDatabasePath("DB_11.db");
         try
         {
             SQLiteDatabase DB = SQLiteDatabase.openDatabase(file.getPath(),null,SQLiteDatabase.OPEN_READONLY);
@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         {
             try
             {
-                SQLiteDatabase DB = MainActivity.this.openOrCreateDatabase("DB_11", MODE_PRIVATE,null);
+                SQLiteDatabase DB = MainActivity.this.openOrCreateDatabase("DB_11.db", MODE_PRIVATE,null);
                 Toast.makeText(MainActivity.this, "DB exists",Toast.LENGTH_SHORT).show();
             }
             catch (Exception e)

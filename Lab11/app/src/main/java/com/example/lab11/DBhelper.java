@@ -33,7 +33,7 @@ public class DBhelper extends SQLiteOpenHelper {
     public static final String ADDRESS = "ADDRESS";
     public static final String HEAD = "HEAD";
     public static final String ID_STUDENT = "ID_STUDENT";
-    private static final String DATABASE_NAME = "DB_11";
+    private static final String DATABASE_NAME = "DB_11.db";
     private static final int SCHEMA = 1;
 
     public Context context;
